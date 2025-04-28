@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'lucide-react';
@@ -11,6 +10,8 @@ const Navbar = () => {
     isActive
       ? "text-red-400 border-b-2 border-red-500 transition duration-300"
       : "hover:text-red-400 hover:border-b-2 hover:border-red-500 transition duration-300";
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="bg-teal-700 p-4 shadow-md">
@@ -34,12 +35,25 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden">
+        <div className="md:hidden cursor-pointer p-2 rounded-md hover:bg-teal-600 transition duration-300" onClick={toggleMenu}>
           <Menu className="text-white h-6 w-6" />
         </div>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-teal-700 text-white font-semibold py-4 grid grid-cols-1 gap-4">
+          <NavLink to='/' className={linkClasses} onClick={toggleMenu}>Home</NavLink>
+          <div className="grid grid-cols-2 gap-4">
+            <NavLink to='/About' className={linkClasses} onClick={toggleMenu}>About</NavLink>
+          </div>
+          <NavLink to='/Contact' className={linkClasses} onClick={toggleMenu}>Contact</NavLink>
+          <NavLink to='/Service' className={linkClasses} onClick={toggleMenu}>Services</NavLink>
+        </div>
+      )}
     </nav>
   );
 };
 
 export default Navbar;
+
