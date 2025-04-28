@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import logo from '../assets/logo.png'; 
+import Logo from '../assets/Logo.png'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
         
         {/* Left: Logo and Name */}
         <div className="flex items-center space-x-4">
-          <img src={logo} alt="Logo" className="h-12 w-12" />
+          <img src={Logo} alt="Logo" className="h-12 w-12" />
           <div>
             <h1 className="text-white font-bold text-lg">NEK Dental & Aesthetic Center</h1>
             <p className="text-red-300 text-sm">Elevate Your Smile & Radiance</p>
